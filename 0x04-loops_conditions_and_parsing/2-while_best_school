@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# Bash script that prints "Best school" 10 times using the while loop
+name="Best School"
+c=1
+while [ $c -lt 11 ]
+do
+	echo "$name"
+	((c++))
+done

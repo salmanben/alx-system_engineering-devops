@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# Displays count of the current directory in a list format where only the pater of  the name after the first dash is displayed
+content=$(ls -1)
+for file in $content
+do  
+        echo "${file#*-}"
+done

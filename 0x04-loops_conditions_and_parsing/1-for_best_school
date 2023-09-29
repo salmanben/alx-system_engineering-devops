@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# Bash script that prints "Best school" 10 times using the for loop
+name="Best School"
+
+for ((i = 1; i < 11; i++))
+do
+	echo "$name"
+done
