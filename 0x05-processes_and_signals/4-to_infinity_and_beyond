@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+#displays To infinity and beyond indefinitely, and  between each iteration of the loop, there is a sleep 2
+
+while true; do
+    echo "To infinity and beyond"
+    sleep 2
+done
