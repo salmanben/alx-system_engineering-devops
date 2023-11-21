@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 """This module defines a class User"""
+from sqlalchemy.ext.declarative import declarative_base
 from models.base_model import BaseModel
 from models.base_model import Base
 from sqlalchemy import Column, Integer, String
