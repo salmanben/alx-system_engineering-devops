@@ -4,9 +4,9 @@ from sqlalchemy.ext.declarative import declarative_base
 from models.base_model import BaseModel, Base
 #   from models.base_model import 
 from sqlalchemy import Column, Integer, String
-from sqlalchemy.orm import relationship
+#from sqlalchemy.orm import relationship
 
-class User(BaseModel):
+class User(BaseModel, Base):
     """This class defines a user by various attributes"""
     __tablename__ = "users"
     email = Column(String(128), nullable = False)
