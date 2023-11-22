@@ -22,7 +22,8 @@ class FileStorage:
         list_obj = []
         for key, value in FileStorage.__objects.items():
             if (value.__class__ == cls):
-                list_obj.append(str(value))
+                inst = eval(cls)(**value)
+                list_obj.append(inst)
         return list_obj
 
     def new(self, obj):
@@ -53,5 +54,5 @@ class FileStorage:
         """Delete obj from __objects."""
         if obj:
             key_to_delete = "{}.{}".format(obj.__class__.__name__, obj.id)
-            if key_to_delete in self.__objects:
-                del self.__objects[key_to_delete]
+            if key_to_delete in FileStorage.__objects:
+                del FileStorage.__objects[key_to_delete]
