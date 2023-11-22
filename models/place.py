@@ -23,6 +23,3 @@ class Place(BaseModel, Base):
     # Assuming City and User models exist with appropriate relationships
     city = relationship("City")
     user = relationship("User")
-
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
