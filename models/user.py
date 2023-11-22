@@ -1,8 +1,7 @@
 #!/usr/bin/python3
 """This module defines a class User"""
 from sqlalchemy.ext.declarative import declarative_base
-from models.base_model import BaseModel
-from models.base_model import Base
+from models.base_model import BaseModel, Base
 from sqlalchemy import Column, Integer, String
 from sqlalchemy.orm import relationship
 from models.review import Review
@@ -22,3 +21,4 @@ class User(BaseModel, Base):
     first_name = Column(String(128))
     last_name = Column(String(128))
     places = relationship("Place", cascade='all, delete, delete-orphan', backref="user")
+    #reviews = relationship("Review", cascade='all, delete, delete-orphan', backref="user")
