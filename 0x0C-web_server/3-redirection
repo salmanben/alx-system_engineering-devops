@@ -1,0 +1,38 @@
+#!/usr/bin/env bash
+# Install and configure Nginx
+
+apt-get update
+apt-get install -y nginx
+
+# Create HTML directory and sample index file
+mkdir -p /etc/nginx/html
+echo "Hello World!" > /etc/nginx/html/index.html
+
+# Configure default site
+printf '%s\n' "server {
+     listen      80;
+     root        /etc/nginx/html;
+     index       index.html;
+}
+" > /etc/nginx/sites-available/default
+
+# Create a configuration file for redirection
+echo "server {
+    listen 80;
+    root /var/www/html;
+    index index.html index.htm index.nginx-debian.html;
+
+    location /redirect_me {
+        return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;
+    }
+}" | sudo tee /etc/nginx/sites-available/redirect.conf >/dev/null
+
+# Create a symbolic link to enable the new site configuration
+ln -s /etc/nginx/sites-available/redirect.conf /etc/nginx/sites-enabled/
+
+# Check Nginx configuration syntax
+nginx -t
+
+# Reload Nginx to apply changes
+service nginx reload
+
