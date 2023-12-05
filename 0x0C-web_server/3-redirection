@@ -35,4 +35,3 @@ nginx -t
 
 # Reload Nginx to apply changes
 service nginx reload
-
