@@ -17,10 +17,9 @@ global
         ssl-default-bind-ciphersuites TLS_AES_128_GCM_SHA256:TLS_AES_256_GCM_SHA384:TLS_CHACHA20_POLY1305_SHA256
         ssl-default-bind-options ssl-min-ver TLSv1.2 no-tls-tickets
 frontend  shophub_frontend
-        bind   0.0.0.0:443 ssl crt /etc/letsencrypt/live/www.shophub.tech/fullchain.pem
-        reqadd X-Forwarded-Proto:\ https
-        acl    letsencrypt-acl path_beg /.well-known/acme-challenge/
-        use_backend letsencrypt-backend if letsencrypt-acl
+        bind   *:443 ssl crt /etc/letsencrypt/live/www.shophub.tech/www.shophub.tech.pem
+        http-request add-header  X-Forwarded-Proto http
+        redirect scheme https if !{ ssl_fc }
         default_backend shophub_backend
 
 backend shophub_backend
