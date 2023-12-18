@@ -8,14 +8,14 @@ apt-get -y install haproxy
 # edit config file
 server_config=\
 "
-frontend  besthor_frontend
+ frontend  shophub_frontend
         bind *:80
         mode http
-        default_backend besthor_backend
-backend besthor_backend
+        default_backend shophub_backend
+backend shophub_backend
         balance roundrobin
-	server 358977-web-01  35.175.104.255:80 check
-	server 358977-web-02  34.227.89.246:80 check
+	server 358977-web-01  54.236.30.10:80 check
+	server 358977-web-02  100.26.136.204:80 check
 "
 echo "$server_config" | sudo tee -a /etc/haproxy/haproxy.cfg
 
@@ -25,5 +25,5 @@ echo "ENABLED=1" | sudo tee -a /etc/default/haproxy
 # Testing the HAproxy configuration file
 sudo haproxy -c -f /etc/haproxy/haproxy.cfg
 
-# Restart the Nginx service
+# Restart the haproxy service
 sudo service haproxy restart
